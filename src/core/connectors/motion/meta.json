@@ -1,0 +1,8 @@
+{
+  "id": "motion",
+  "title": "Motion sensors",
+  "summary": "Accelerometer, gyroscope, tilt and compass heading as streams. Works on plain-http pages (native backend).",
+  "limits": ["Foreground only.", "High rate (~50–60 Hz): throttle before setting React state."],
+  "example": "const motion = useConnector('motion')\nuseSubscription(() => motion.watchOrientation((o) => setHeading(o.heading)), [])",
+  "mocks": "synthetic sway stream, no fixtures"
+}

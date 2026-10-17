@@ -1,0 +1,8 @@
+{
+  "id": "geolocation",
+  "title": "Geolocation",
+  "summary": "GPS / network position, one-shot or streamed (with speed and heading while moving), plus a distance helper.",
+  "limits": ["Foreground only: no background tracking.", "No maps or geocoding (no backend); show coordinates or draw your own."],
+  "example": "const geo = useConnector('geolocation')\nconst here = await geo.getPosition()\nuseSubscription(() => geo.watchPosition(setPosition), [])",
+  "mocks": "window.__mocks.geolocation = { latitude, longitude, fail }"
+}

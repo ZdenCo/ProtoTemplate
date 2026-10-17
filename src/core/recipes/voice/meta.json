@@ -1,0 +1,9 @@
+{
+  "id": "voice",
+  "title": "Voice in/out",
+  "summary": "useVoice() (neuralTts optional at runtime): listen with a live transcript, speak with the natural Kokoro voice (falls back to the system voice for other languages or before download), speechStream() to speak streamed LLM output.",
+  "hooks": ["useVoice"],
+  "connectors": ["speech", "neuralTts", "tts"],
+  "recipes": ["models"],
+  "example": "import { useVoice } from '@core/recipes/voice'\nconst voice = useVoice({ language: 'en-US' })\nconst question = await voice.listen()\nawait voice.speak(answer)"
+}

@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+/* Scan modules and core for class names. */
+@source '../../../modules';
+
+/*
+ * Design tokens. Change the app's look here (or in src/theme.css), never inside components.
+ * Use them as Tailwind classes: bg-surface, text-muted, border-line, bg-accent, text-on-accent …
+ */
+@theme {
+  --color-bg: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef0f4;
+  --color-line: #dfe3ea;
+  --color-text: #12151c;
+  --color-muted: #5f6878;
+  --color-accent: #3157e8;
+  --color-accent-strong: #2443bf;
+  --color-on-accent: #ffffff;
+  --color-success: #16884a;
+  --color-warning: #b26a00;
+  --color-danger: #c8312b;
+
+  --radius-card: 1rem;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b0d12;
+    --color-surface: #151922;
+    --color-surface-2: #1d2230;
+    --color-line: #2a3142;
+    --color-text: #eef1f6;
+    --color-muted: #9aa3b5;
+    --color-accent: #6d8bff;
+    --color-accent-strong: #8aa2ff;
+    --color-on-accent: #0b0d12;
+    --color-success: #3ccf7f;
+    --color-warning: #f2b047;
+    --color-danger: #ff6b63;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-y: none;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}

@@ -1,0 +1,101 @@
+{
+  "protocolVersion": 1,
+  "shell": {
+    "name": "ProtoShell",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "capability": "qr",
+      "package": "@capacitor/barcode-scanner",
+      "bridgeName": "CapacitorBarcodeScanner",
+      "description": "Native full-screen QR / barcode scanner",
+      "version": "3.1.3"
+    },
+    {
+      "capability": "bluetooth",
+      "package": "@capacitor-community/bluetooth-le",
+      "bridgeName": "BluetoothLe",
+      "description": "Bluetooth Low Energy (central role)",
+      "version": "8.3.0"
+    },
+    {
+      "capability": "llm",
+      "package": "@capacitor/local-llm",
+      "bridgeName": "LocalLLM",
+      "description": "OS-provided on-device LLM: Apple Intelligence (iOS 26+) / Gemini Nano (Android)",
+      "version": "1.0.0"
+    },
+    {
+      "capability": "vlm",
+      "package": "@protoshell/capacitor-vlm",
+      "bridgeName": "LocalVLM",
+      "description": "Downloadable vision-language models (Qwen3-VL 2B/4B) via llama.cpp",
+      "version": "0.1.0"
+    },
+    {
+      "capability": "tts",
+      "package": "@capacitor-community/text-to-speech",
+      "bridgeName": "TextToSpeech",
+      "description": "On-device text-to-speech (system voices)",
+      "version": "8.0.2"
+    },
+    {
+      "capability": "neuralTts",
+      "package": "@protoshell/capacitor-neural-tts",
+      "bridgeName": "NeuralTTS",
+      "description": "Natural on-device text-to-speech (Kokoro 82M via sherpa-onnx), downloaded on demand",
+      "version": "0.1.0"
+    },
+    {
+      "capability": "storage",
+      "package": "@capacitor/preferences",
+      "bridgeName": "Preferences",
+      "description": "Persistent key/value storage",
+      "version": "8.0.1"
+    },
+    {
+      "capability": "motion",
+      "package": "@capacitor/motion",
+      "bridgeName": "Motion",
+      "description": "Accelerometer, gyroscope and orientation (native backend in @protoshell/capacitor-shell)",
+      "version": "8.0.1"
+    },
+    {
+      "capability": "geolocation",
+      "package": "@capacitor/geolocation",
+      "bridgeName": "Geolocation",
+      "description": "GPS / network location, foreground",
+      "version": "8.2.3"
+    },
+    {
+      "capability": "camera",
+      "package": "@capacitor/camera",
+      "bridgeName": "Camera",
+      "description": "Take photos and pick from the photo library",
+      "version": "8.2.5"
+    },
+    {
+      "capability": "speech",
+      "package": "@capgo/capacitor-speech-recognition",
+      "bridgeName": "SpeechRecognition",
+      "description": "Speech to text with the OS recognizer",
+      "version": "8.4.3"
+    },
+    {
+      "capability": "haptics",
+      "package": "@capacitor/haptics",
+      "bridgeName": "Haptics",
+      "description": "Vibration and haptic feedback",
+      "version": "8.0.2"
+    },
+    {
+      "capability": "notifications",
+      "package": "@capacitor/local-notifications",
+      "bridgeName": "LocalNotifications",
+      "description": "Local (on-device) notifications",
+      "version": "8.3.1"
+    }
+  ],
+  "generatedAt": "2026-10-15T16:15:20.533Z"
+}

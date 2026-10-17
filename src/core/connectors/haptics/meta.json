@@ -1,0 +1,8 @@
+{
+  "id": "haptics",
+  "title": "Haptics",
+  "summary": "Taptic Engine (iOS) / vibrator (Android) feedback: impact, success/warning/error pattern, selection tick, vibrate.",
+  "limits": ["No custom patterns on iOS."],
+  "example": "const haptics = useConnector('haptics')\nawait haptics.notify('success')",
+  "mocks": "no fixtures; uses navigator.vibrate when present"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "speech",
+  "title": "Speech to text",
+  "summary": "OS speech recognizer with a live transcript. Many languages including Czech and German.",
+  "limits": ["Listens until the user pauses (one utterance); call again for the next.", "May need network on some Android devices.", "Ask for permission with ensurePermission() first, on a user tap."],
+  "example": "const speech = useConnector('speech')\nconst text = await speech.listen({ language: 'en-US' }, setLiveText)",
+  "mocks": "window.__mocks.speech = { transcript, fail }"
+}

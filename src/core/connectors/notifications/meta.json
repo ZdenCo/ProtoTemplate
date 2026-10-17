@@ -1,0 +1,8 @@
+{
+  "id": "notifications",
+  "title": "Local notifications",
+  "summary": "Show a notification now or schedule one for later (reminders, timers). Tap events come back to the app.",
+  "limits": ["Local only: no push, no server.", "Ids are shared with other apps in the shell: cancel only ids you created."],
+  "example": "const notifications = useConnector('notifications')\nawait notifications.notify({ title: 'Break time', at: new Date(Date.now() + 25 * 60_000) })",
+  "mocks": "logs to console; window.__mocks.notifications.sent"
+}

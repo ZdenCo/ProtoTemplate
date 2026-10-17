@@ -1,0 +1,8 @@
+{
+  "id": "storage",
+  "title": "Persistent storage",
+  "summary": "Key/value storage that survives app restarts. Modules use it through useStoredState / useModuleStorage (auto-prefixed per app and module), and blobs (photos) through useBlobStore (IndexedDB).",
+  "limits": ["Strings only at the raw level; JSON helpers on top.", "Keep values small (settings, lists). Photos and large data go to useBlobStore.", "Core uses it, never pruned."],
+  "example": "const [notes, setNotes] = useStoredState<string[]>('notes', [])\nconst store = useModuleStorage()\nawait store.setJSON('last', { at: Date.now() })",
+  "mocks": "browser localStorage (prefix mock:)"
+}

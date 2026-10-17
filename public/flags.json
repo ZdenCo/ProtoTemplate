@@ -1,0 +1,4 @@
+{
+  "$comment": "Runtime flag overrides. Deployed next to index.html: edit it on the server to turn modules on/off without a rebuild. Keys are flag names from src/app.composition.ts.",
+  "flags": {}
+}

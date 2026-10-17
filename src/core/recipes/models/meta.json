@@ -1,0 +1,9 @@
+{
+  "id": "models",
+  "title": "Model downloads",
+  "summary": "useModelDownload() tracks and downloads on-demand models with progress; <ModelGate> asks before downloading and renders its children once the model is ready.",
+  "hooks": ["useModelDownload", "ModelGate", "formatBytes"],
+  "connectors": [],
+  "recipes": [],
+  "example": "import { ModelGate } from '@core/recipes/models'\n<ModelGate download={vision.model} name=\"Qwen3-VL 2B\" sizeBytes={1.6e9}>…</ModelGate>"
+}
