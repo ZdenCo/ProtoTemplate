@@ -14,20 +14,39 @@ test.describe('pages', () => {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('./');
-    await expect(page.getByRole('heading', { level: 1, name: 'Home' })).toBeVisible();
-    await expect(page.locator('[data-zone="home.main"] [data-module]').first()).toBeVisible();
-    await page.screenshot({ path: shot('page-home', info.project.name), fullPage: true });
+    await expect(page.getByRole('heading', { level: 1, name: 'Jobs' })).toBeVisible();
+    await expect(page.locator('[data-zone="jobs.main"] [data-module]').first()).toBeVisible();
+    await page.screenshot({ path: shot('page-jobs', info.project.name), fullPage: true });
 
-    for (const tab of ['Tools', 'Settings']) {
+    for (const tab of ['Profile', 'Saved', 'Settings']) {
       await page.getByRole('link', { name: tab }).click();
       await expect(page.getByRole('heading', { level: 1, name: tab })).toBeVisible();
+      await expect(page.locator(`[data-zone="${tab.toLowerCase()}.main"] [data-module]`).first()).toBeVisible();
+      await page.waitForLoadState('networkidle');
       await page.screenshot({ path: shot(`page-${tab.toLowerCase()}`, info.project.name), fullPage: true });
     }
     expect(errors).toEqual([]);
   });
 
+  test('dark mode captures look right', async ({ page }, info) => {
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto('./');
+    await expect(page.getByRole('heading', { level: 1, name: 'Jobs' })).toBeVisible();
+    await expect(page.locator('[data-zone="jobs.main"] [data-module]').first()).toBeVisible();
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({ path: shot('page-jobs-dark', info.project.name), fullPage: true });
+
+    for (const tab of ['Profile', 'Saved', 'Settings']) {
+      await page.getByRole('link', { name: tab }).click();
+      await expect(page.getByRole('heading', { level: 1, name: tab })).toBeVisible();
+      await expect(page.locator(`[data-zone="${tab.toLowerCase()}.main"] [data-module]`).first()).toBeVisible();
+      await page.waitForLoadState('networkidle');
+      await page.screenshot({ path: shot(`page-${tab.toLowerCase()}-dark`, info.project.name), fullPage: true });
+    }
+  });
+
   test('no block shows an error state', async ({ page }) => {
-    for (const path of ['#/', '#/tools', '#/settings']) {
+    for (const path of ['#/', '#/profile', '#/saved', '#/settings']) {
       await page.goto(`./${path}`);
       await page.waitForLoadState('networkidle');
       await expect(page.getByRole('alert')).toHaveCount(0);
@@ -35,9 +54,9 @@ test.describe('pages', () => {
   });
 
   test('a flag in the URL switches a module off', async ({ page }) => {
-    await page.goto('./?ff=exampleScan:off#/');
-    await expect(page.getByRole('heading', { level: 1, name: 'Home' })).toBeVisible();
-    await expect(page.locator('[data-module="example-scan"]')).toHaveCount(0);
+    await page.goto('./?ff=jobSearch:off#/');
+    await expect(page.getByRole('heading', { level: 1, name: 'Jobs' })).toBeVisible();
+    await expect(page.locator('[data-module="job-search"]')).toHaveCount(0);
   });
 });
 

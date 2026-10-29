@@ -1,8 +1,0 @@
-{
-  "id": "qr",
-  "title": "QR / barcode scanner",
-  "summary": "Native full-screen scanner for QR codes and, with anyFormat, every common barcode (EAN, UPC, Code 128, DataMatrix, PDF417 …).",
-  "limits": ["One code per scan; the scanner closes after the first hit.", "Closing the scanner rejects with UserCancelledError."],
-  "example": "const qr = useConnector('qr')\nconst { text, format } = await qr.scan({ instructions: 'Scan the label', anyFormat: true })",
-  "mocks": "window.__mocks.qr = { text, format, fail }"
-}

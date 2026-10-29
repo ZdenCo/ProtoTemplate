@@ -1,9 +1,0 @@
-{
-  "id": "scan",
-  "title": "Scanner with history",
-  "summary": "useScanner(): QR/barcode scan with haptic feedback and a persisted, per-module history list.",
-  "hooks": ["useScanner"],
-  "connectors": ["qr", "haptics"],
-  "recipes": [],
-  "example": "import { useScanner } from '@core/recipes/scan'\nconst scanner = useScanner({ anyFormat: true })\n<AsyncButton onClick={scanner.scan}>Scan</AsyncButton>"
-}

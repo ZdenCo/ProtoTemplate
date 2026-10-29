@@ -30,7 +30,9 @@ export default function JobResults() {
   const [profile, setProfile] = useStoredState<ProfileData>('cachedProfile', INITIAL_PROFILE);
   const [savedJobIds, setSavedJobIds] = useStoredState<string[]>('savedJobIds', []);
   const [hiddenJobIds, setHiddenJobIds] = useStoredState<string[]>('hiddenJobIds', []);
-  const [settings] = useModuleSettings<{ failSource: { type: 'select'; default: string; options: { value: string; label: string }[] } }>();
+  const [settings] = useModuleSettings<{
+    failSource: { type: 'select'; label: string; default: string; options: { value: string; label: string }[] };
+  }>();
 
   const [rawJobs, setRawJobs] = useState<MergedJob[]>([]);
   const [sourceStatuses, setSourceStatuses] = useState<SourceStatus[]>([
@@ -103,7 +105,15 @@ export default function JobResults() {
   }, [profile, settings.failSource]);
 
   useEffect(() => {
-    void runSearch();
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (!cancelled) {
+        void runSearch();
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [runSearch]);
 
   const toggleSave = (jobId: string) => {

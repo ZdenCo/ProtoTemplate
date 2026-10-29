@@ -12,14 +12,14 @@ describe('job-search/saved', () => {
   it('saves a job from results and displays it in saved block', async () => {
     await renderBlock('job-search', 'results');
 
-    const saveButtons = await screen.findAllByRole('button', { name: /uložit nabídku/i });
+    const saveButtons = await screen.findAllByRole('button', { name: /uložit nabídku/i }, { timeout: 5000 });
     expect(saveButtons.length).toBeGreaterThan(0);
     await userEvent.click(saveButtons[0]!);
 
     cleanup();
 
     await renderBlock('job-search', 'saved');
-    expect(await screen.findByText(/Frontend Vývojář|Senior React/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Frontend Vývojář|Senior React/i, {}, { timeout: 5000 })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^odebrat$/i })).toBeInTheDocument();
   });
 });

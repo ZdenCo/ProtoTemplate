@@ -1,8 +1,0 @@
-{
-  "id": "bluetooth",
-  "title": "Bluetooth LE",
-  "summary": "BLE central: scan, native device picker, connect, list services, read/write characteristics, subscribe to notifications (heart-rate straps, sensors, beacons, custom hardware).",
-  "limits": ["Central role only: the phone can't act as a peripheral.", "No classic Bluetooth (audio, serial SPP).", "Values are DataView: decode bytes yourself."],
-  "example": "const ble = useConnector('bluetooth')\nconst device = await ble.requestDevice({ services: ['180d'] })\nawait ble.connect(device.deviceId)\nconst stop = await ble.subscribe(device.deviceId, '180d', '2a37', (v) => setBpm(v.getUint8(1)))",
-  "mocks": "fake heart-rate strap 'Mock HR Strap' + beacon"
-}

@@ -1,8 +1,0 @@
-{
-  "id": "llm",
-  "title": "On-device LLM (OS model)",
-  "summary": "Text LLM built into the OS: Apple Intelligence (iOS 26+) or Gemini Nano (Android). No download for the app, works offline, multi-turn via sessionId.",
-  "limits": ["Text only, no images (use vlm).", "No token streaming: the whole answer arrives at once.", "Android caps output at 256 tokens: ask for short answers.", "Only on supported devices: check availability() / ensureReady() and show a fallback."],
-  "example": "const llm = useConnector('llm')\nawait llm.ensureReady()\nconst answer = await llm.ask('Summarise: …', { instructions: 'One sentence.' })",
-  "mocks": "window.__mocks.llm = { reply, availability, fail }"
-}

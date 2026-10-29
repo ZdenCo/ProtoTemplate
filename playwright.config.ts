@@ -1,5 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const extraLib = '/home/node/chrome-deps/root/usr/lib/x86_64-linux-gnu:/home/node/chrome-deps/root/lib/x86_64-linux-gnu';
+process.env.LD_LIBRARY_PATH = process.env.LD_LIBRARY_PATH
+  ? `${extraLib}:${process.env.LD_LIBRARY_PATH}`
+  : extraLib;
+process.env.FONTCONFIG_PATH = '/home/node/chrome-deps/root/etc/fonts';
+
 // Runs against the production build (vite preview) with mock connectors, at phone viewports.
 // Both projects use Chromium so only one browser needs installing: npx playwright install chromium
 export default defineConfig({

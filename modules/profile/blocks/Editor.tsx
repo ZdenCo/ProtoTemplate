@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useEmit, useStoredState } from '@core';
 import { Badge, Button, Card, Divider, Field, Input, Row, Select, Spinner, Stack, Text, TextArea, toast } from '@core/ui';
 import { DEFAULT_PROFILE } from '../types';
@@ -7,37 +7,23 @@ import type { Position, RemotePreference, UserProfile } from '../types';
 const POPULAR_LOCATIONS = ['Praha', 'Brno', 'Ostrava', 'Plzeň', 'Liberec', 'Olomouc'];
 const POPULAR_SKILLS = ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'Java', 'SQL', 'Docker', 'Git'];
 
-export default function ProfileEditor() {
-  const [profile, setProfile, { loaded }] = useStoredState<UserProfile>('profile', DEFAULT_PROFILE);
-  const [draft, setDraft] = useState<UserProfile>(profile);
-  const [initialized, setInitialized] = useState(false);
+function ProfileEditorForm({
+  initialProfile,
+  onSave,
+}: {
+  initialProfile: UserProfile;
+  onSave: (p: UserProfile) => void;
+}) {
+  const [draft, setDraft] = useState<UserProfile>(initialProfile);
   const [newSkill, setNewSkill] = useState('');
   const [newKeyword, setNewKeyword] = useState('');
   const [newLang, setNewLang] = useState('');
   const [newLoc, setNewLoc] = useState('');
   const [jsonText, setJsonText] = useState('');
   const [showJson, setShowJson] = useState(false);
-  const emit = useEmit();
-
-  useEffect(() => {
-    if (loaded && !initialized) {
-      setDraft(profile);
-      setInitialized(true);
-    }
-  }, [loaded, initialized, profile]);
-
-  if (!loaded || !initialized) {
-    return (
-      <div className="flex justify-center py-8">
-        <Spinner />
-      </div>
-    );
-  }
 
   const handleSave = () => {
-    setProfile(draft);
-    emit('profile:changed', draft);
-    toast.success('Profil byl úspěšně uložen');
+    onSave(draft);
   };
 
   const addPosition = () => {
@@ -489,5 +475,29 @@ export default function ProfileEditor() {
         )}
       </Card>
     </Stack>
+  );
+}
+
+export default function ProfileEditor() {
+  const [profile, setProfile, { loaded }] = useStoredState<UserProfile>('profile', DEFAULT_PROFILE);
+  const emit = useEmit();
+
+  if (!loaded) {
+    return (
+      <div className="flex justify-center py-8">
+        <Spinner />
+      </div>
+    );
+  }
+
+  return (
+    <ProfileEditorForm
+      initialProfile={profile}
+      onSave={(draft) => {
+        setProfile(draft);
+        emit('profile:changed', draft);
+        toast.success('Profil byl úspěšně uložen');
+      }}
+    />
   );
 }

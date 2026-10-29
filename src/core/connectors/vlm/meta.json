@@ -1,8 +1,0 @@
-{
-  "id": "vlm",
-  "title": "Vision-language model (Qwen3-VL)",
-  "summary": "On-device multimodal LLM: ask questions about photos (describe, OCR, count, compare, read labels) or plain text chat, with token streaming. Runs fully offline after a one-time download.",
-  "limits": ["One-time download: 2B ≈ 1.6 GB, 4B ≈ 3 GB (4B needs 8 GB+ RAM). Always show progress and ask before downloading (use the models recipe).", "Must be loaded into memory before asking (a few seconds).", "Slower than cloud models: keep maxTokens small (100–300) and images ≤ 1280 px.", "Stateless: send the whole conversation each time."],
-  "example": "const vlm = useConnector('vlm')\nif (!(await vlm.isDownloaded('qwen3-vl-2b'))) await vlm.download('qwen3-vl-2b', setProgress)\nawait vlm.load('qwen3-vl-2b')\nconst { text } = await vlm.ask('What does the sign say?', { images: [photo.uri], maxTokens: 200 }, (t) => append(t))",
-  "mocks": "window.__mocks.vlm = { reply, downloaded, fail }"
-}

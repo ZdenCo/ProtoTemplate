@@ -1,8 +1,0 @@
-{
-  "id": "tts",
-  "title": "System text-to-speech",
-  "summary": "Speaks text with the OS voices. Every language the OS has (Czech, German, Japanese …), no download.",
-  "limits": ["Sounds more robotic than neuralTts.", "Some Android voices need network: prefer voices with offline: true.", "Best iOS voices (Enhanced/Premium) must be downloaded by the user in Settings."],
-  "example": "const tts = useConnector('tts')\nawait tts.speak('Dobrý den', { lang: 'cs-CZ' })",
-  "mocks": "browser speechSynthesis"
-}

@@ -894,8 +894,8 @@ function createMockSource(id: string, name: string, dataset: Job[], failSourceSe
     id,
     name,
     async search(query: SearchQuery): Promise<Job[]> {
-      const isTest = typeof process !== 'undefined' && process.env?.NODE_ENV === 'test';
-      const delay = isTest ? 10 : Math.floor(Math.random() * (1200 - 300 + 1)) + 300;
+      const isTest = import.meta.env.MODE === 'test';
+      const delay = isTest ? 0 : Math.floor(Math.random() * (1200 - 300 + 1)) + 300;
       await new Promise((resolve) => setTimeout(resolve, delay));
 
       if (failSourceSetting && failSourceSetting === id) {

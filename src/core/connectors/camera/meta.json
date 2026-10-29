@@ -1,8 +1,0 @@
-{
-  "id": "camera",
-  "title": "Camera and photo picker",
-  "summary": "Take a photo with the native camera or pick one or more from the photo library.",
-  "limits": ["Photos only, no video.", "Cancelling rejects with UserCancelledError.", "photo.uri goes straight into vlm without base64."],
-  "example": "const camera = useConnector('camera')\nconst photo = await camera.takePhoto({ maxSize: 1280 })\n<img src={photo.webPath} />",
-  "mocks": "window.__mocks.camera = { image, fail }"
-}

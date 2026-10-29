@@ -1,8 +1,0 @@
-{
-  "id": "neuralTts",
-  "title": "Natural voice (Kokoro neural TTS)",
-  "summary": "Chatbot-quality voices on the device (Kokoro 82M). Speaks streamed LLM output sentence by sentence while it is still generating.",
-  "limits": ["One-time ~370 MB download, then offline. Ask before downloading (use the models recipe).", "Languages: US/UK English, Spanish, French, Hindi, Italian, Brazilian Portuguese, Chinese. Others (Czech, German, Japanese …) need tts."],
-  "example": "const voice = useConnector('neuralTts')\nawait voice.prepare(setProgress)\nawait voice.speak('Hi! How can I help?', { voice: 'af_heart' })\nconst stream = voice.createSpeechStream()\nawait vlm.ask(q, {}, (t) => stream.push(t)); await stream.end()",
-  "mocks": "window.__mocks.neuralTts = { downloaded, fail }; speaks through the browser voice"
-}

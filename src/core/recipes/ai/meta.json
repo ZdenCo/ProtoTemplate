@@ -1,9 +1,0 @@
-{
-  "id": "ai",
-  "title": "AI chat (OS model)",
-  "summary": "useAiChat() keeps a multi-turn conversation with the on-device OS LLM (messages, busy, error, send, reset); useAiStatus() tells whether the device has one.",
-  "hooks": ["useAiChat", "useAiStatus"],
-  "connectors": ["llm"],
-  "recipes": [],
-  "example": "import { useAiChat } from '@core/recipes/ai'\nconst chat = useAiChat({ instructions: 'You are a cooking assistant. Short answers.' })\nawait chat.send('What can I make with eggs?')"
-}

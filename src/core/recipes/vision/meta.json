@@ -1,9 +1,0 @@
-{
-  "id": "vision",
-  "title": "Photo Q&A (vision model)",
-  "summary": "useVision(): take or pick a photo, ask about it, stream the answer from on-device Qwen3-VL. Includes model download state for <ModelGate>.",
-  "hooks": ["useVision"],
-  "connectors": ["camera", "vlm"],
-  "recipes": ["models"],
-  "example": "import { useVision } from '@core/recipes/vision'\nimport { ModelGate } from '@core/recipes/models'\nconst vision = useVision()\n<ModelGate download={vision.model} {...vision.modelInfo}>\n  <AsyncButton onClick={vision.takePhoto}>Photo</AsyncButton>\n  <AsyncButton onClick={() => vision.ask('Read the label')}>Ask</AsyncButton>\n  <StreamingText text={vision.answer} streaming={vision.streaming} />\n</ModelGate>"
-}
