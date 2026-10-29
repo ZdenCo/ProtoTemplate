@@ -1,37 +1,29 @@
 import { defineComposition } from '@core/define';
 
-// The only place that decides what the app shows: pages (zones-only layouts), which module
-// blocks go into which zone, and the flags that switch modules on and off.
 export default defineComposition({
   pages: {
-    home: { path: '/', title: 'Home', page: () => import('./pages/HomePage'), tab: { label: 'Home', icon: '🏠' } },
-    tools: { path: '/tools', title: 'Tools', page: () => import('./pages/ToolsPage'), tab: { label: 'Tools', icon: '🧰' } },
+    jobs: { path: '/', title: 'Jobs', page: () => import('./pages/JobsPage'), tab: { label: 'Jobs', icon: '💼' } },
+    profile: { path: '/profile', title: 'Profile', page: () => import('./pages/ProfilePage'), tab: { label: 'Profile', icon: '👤' } },
+    saved: { path: '/saved', title: 'Saved', page: () => import('./pages/SavedPage'), tab: { label: 'Saved', icon: '⭐' } },
     settings: { path: '/settings', title: 'Settings', page: () => import('./pages/SettingsPage'), tab: { label: 'Settings', icon: '⚙️' } },
   },
 
   flags: {
-    exampleScan: { default: true, description: 'Example: QR scanner with history' },
-    examplePhotoQa: { default: true, description: 'Example: photo Q&A with the vision model' },
-    exampleAssistant: { default: true, description: 'Example: text/voice assistant on the OS LLM' },
-    exampleSensors: { default: true, description: 'Example: compass and walk tracker' },
-    exampleReminders: { default: true, description: 'Example: local notification reminders' },
+    jobSearch: { default: true, description: 'Job aggregator and matching' },
+    profile: { default: true, description: 'User work profile' },
   },
 
   modules: {
-    'example-scan': { flag: 'exampleScan' },
-    'example-photo-qa': { flag: 'examplePhotoQa' },
-    'example-assistant': { flag: 'exampleAssistant' },
-    'example-sensors': { flag: 'exampleSensors' },
-    'example-reminders': { flag: 'exampleReminders' },
+    'job-search': { flag: 'jobSearch' },
+    'profile': { flag: 'profile' },
+    'app-info': {},
   },
 
   placements: [
-    { zone: 'home.main', module: 'example-scan', block: 'card', order: 10 },
-    { zone: 'home.main', module: 'example-photo-qa', block: 'teaser', order: 20 },
-    { zone: 'home.main', module: 'example-assistant', block: 'chat', order: 30 },
-    { zone: 'tools.main', module: 'example-sensors', block: 'compass', order: 10 },
-    { zone: 'tools.main', module: 'example-sensors', block: 'walk', order: 20 },
-    { zone: 'tools.main', module: 'example-reminders', block: 'card', order: 30 },
-    { zone: 'settings.main', module: 'app-info', block: 'card' },
+    { zone: 'jobs.main', module: 'profile', block: 'summary', order: 10 },
+    { zone: 'jobs.main', module: 'job-search', block: 'results', order: 20 },
+    { zone: 'profile.main', module: 'profile', block: 'editor', order: 10 },
+    { zone: 'saved.main', module: 'job-search', block: 'saved', order: 10 },
+    { zone: 'settings.main', module: 'app-info', block: 'card', order: 10 },
   ],
 });

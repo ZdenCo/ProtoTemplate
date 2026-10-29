@@ -1,9 +1,9 @@
 import { PageLayout, Zone } from '@core/ui';
 
-export default function ToolsPage() {
+export default function ProfilePage() {
   return (
     <PageLayout>
-      <Zone name="tools.main" />
+      <Zone name="profile.main" />
     </PageLayout>
   );
 }

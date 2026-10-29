@@ -1,5 +1,37 @@
-/*
- * App-specific theme overrides. Redefine core tokens (see src/core/ui/theme.css), e.g.:
- *
- * :root { --color-accent: #e8590c; --color-accent-strong: #c2410c; }
- */
+:root {
+  --color-accent: #c8b6ff;
+  --color-accent-strong: #b29bee;
+  --color-on-accent: #1e113b;
+  --color-secondary: #b8e0d2;
+  --color-on-secondary: #0d2e23;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-accent: #c8b6ff;
+    --color-accent-strong: #d9ceff;
+    --color-on-accent: #130924;
+    --color-secondary: #b8e0d2;
+    --color-on-secondary: #082018;
+  }
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-secondary\/15 {
+  background-color: color-mix(in srgb, var(--color-secondary) 15%, transparent);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-on-secondary {
+  color: var(--color-on-secondary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
